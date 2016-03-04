@@ -40,16 +40,12 @@ void mostrarMatriz (int iTamR, int iTamC)
 }
 
 // Función que obtiene la matriz aumentada modificada después del método de Montante.
-void MatrizMontante (int iTamR, int iTamC)
-{
+void MatrizMontante (int iTamR, int iTamC) {
     int iPivote;
-    for (int iReng = 0; iReng < iTamR; iReng++)
-    {
-        for (int iCol = 0; iCol < iTamC; iCol++)
-        {
+    for (int iReng = 0; iReng < iTamR; iReng++) {
+        for (int iCol = 0; iCol < iTamC; iCol++) {
             // Para tomar la diagonal.
-            if (iReng == iCol)
-            {
+            if (iReng == iCol) {
                 iPivote = iCoeficientes[iReng][iCol];
                 // Primero hacer ceros hasta la columna del pivote.
                 // Copiar en la diagonal principal el pivote hasta la columna del pivote.
@@ -62,11 +58,11 @@ void MatrizMontante (int iTamR, int iTamC)
 }
 
 // Función que resuelve un SEL dada en una matriz.
-void SolucionSEL (int iTamR, int iTamC)
-{
-    for (int iReng = iTamR - 1; iTamR >= 0; iTamR--)
-    {
-        for (int iCol = )
+void SolucionSEL (int iTamR, int iTamC) {
+    for (int iReng = iTamR - 1; iTamR >= 0; iTamR--) {
+        for (int iCol = ) {
+            
+        }
     }
 }
 
@@ -80,8 +76,7 @@ int main() {
     cin >> iIncognitas;
     
     // Validación de que es una matriz cuadrada.
-    while (iEcuaciones != iIncognitas)
-    {
+    while (iEcuaciones != iIncognitas) {
         cout << "El número de ecuaciones-incógnitas no coinciden." << endl;
         cout << "Ingrese el número de ecuaciones: ";
         cin >> iEcuaciones;
@@ -91,10 +86,8 @@ int main() {
     
     // Ingreso de coeficientes.
     cout << "Por favor ingrese" << endl;
-    for (int iReng = 0; iReng < iEcuaciones; iReng++)
-    {
-        for (int iCol = 0; iCol < iIncognitas; iCol++)
-        {
+    for (int iReng = 0; iReng < iEcuaciones; iReng++) {
+        for (int iCol = 0; iCol < iIncognitas; iCol++) {
             cout << "El coeficiente #"<< iCol + 1 <<" de la ecuación " << iReng + 1 << ": ";
             cin >> iCoeficientes[iReng][iCol];
         }
