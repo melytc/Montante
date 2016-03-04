@@ -18,28 +18,11 @@
 using namespace std;
 
 int iCoeficientes[10][10];
-int iMIdentidad[10][10];
-int iMAumentada[20][20];
 
-// Función que obtiene el determinante, lo cual hace con programación dinámica.
+// Función que obtiene el determinante de una matriz de 2 x 2.
 int determinante (int iA, int iB, int iC, int iD)
 {
     return (iA * iB) - (iC * iD);
-}
-
-// Función que crea una matriz identidad según el tamño dado.
-void crearMIdentidad (int iTam)
-{
-    for (int iReng = 0; iReng < iTam; iReng++)
-    {
-        for (int iCol = 0; iCol < iTam; iCol++)
-        {
-            if (iCol == iReng)
-                iMIdentidad[iReng][iCol] = 1;
-            else
-                iMIdentidad[iReng][iCol] = 0;
-        }
-    }
 }
 
 // Función para desplegar una matriz de cualquier tamaño.
@@ -49,38 +32,15 @@ void mostrarMatriz (int iTamR, int iTamC)
     {
         for (int iCol = 0; iCol < iTamC; iCol++)
         {
-            cout << iMAumentada[iReng][iCol] << "\t";
+            cout << iCoeficientes[iReng][iCol] << "\t";
         }
         cout << endl;
     }
     cout << endl;
 }
 
-// Función que crea una matriz aumentada
-void creaMatrizAumentada(int iTam)
-{
-    // Primero llena la matriz de coeficientes la parte izquierda.
-    for (int iReng = 0; iReng < iTam; iReng++)
-    {
-        for (int iCol = 0; iCol < iTam; iCol++)
-            iMAumentada[iReng][iCol] = iCoeficientes[iReng][iCol];
-    }
-    
-    // Despúes crear la matriz identidad.
-    crearMIdentidad(iTam);
-    
-    // Por último, agregar esa matriz identidad al lado izquierdo de la matriz aumentada.
-    for (int iReng = 0; iReng < iTam; iReng++)
-    {
-        for (int iCol = iTam; iCol < iTam * 2; iCol++)
-            iMAumentada[iReng][iCol] = iMIdentidad[iReng][iCol - iTam];
-    }
-    
-    mostrarMatriz(iTam, iTam * 2);
-}
-
 // Función que obtiene la matriz aumentada modificada después del método de Montante.
-void MatrizMontante(int iTamR, int iTamC)
+void MatrizMontante (int iTamR, int iTamC)
 {
     int iPivote;
     for (int iReng = 0; iReng < iTamR; iReng++)
@@ -90,13 +50,23 @@ void MatrizMontante(int iTamR, int iTamC)
             // Para tomar la diagonal.
             if (iReng == iCol)
             {
-                iPivote = iMAumentada[iReng][iCol];
+                iPivote = iCoeficientes[iReng][iCol];
                 // Primero hacer ceros hasta la columna del pivote.
+                // Copiar en la diagonal principal el pivote hasta la columna del pivote.
                 // Copiar el renglón del pivote igual, menos los ceros de la izquierda ya obtenidos.
                 // Hacer dos funciones: uno para el cuadrante I, y otro para el cuadrante IV.
             }
             
         }
+    }
+}
+
+// Función que resuelve un SEL dada en una matriz.
+void SolucionSEL (int iTamR, int iTamC)
+{
+    for (int iReng = iTamR - 1; iTamR >= 0; iTamR--)
+    {
+        for (int iCol = )
     }
 }
 
@@ -129,9 +99,6 @@ int main() {
             cin >> iCoeficientes[iReng][iCol];
         }
     }
-    
-    // Creo la matriz aumentada donde tiene la matriz identidad.
-    creaMatrizAumentada(iEcuaciones);
     
     return 0;
 }
