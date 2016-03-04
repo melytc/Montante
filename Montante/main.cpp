@@ -40,31 +40,100 @@ void mostrarMatriz (int iTamR, int iTamC)
 }
 
 // Función que obtiene la matriz aumentada modificada después del método de Montante.
+<<<<<<< Updated upstream
 void MatrizMontante (int iTamR, int iTamC) {
     int iPivote;
     for (int iReng = 0; iReng < iTamR; iReng++) {
         for (int iCol = 0; iCol < iTamC; iCol++) {
+=======
+void MatrizMontante (int iTamR, int iTamC, int iMatAct[iTamR][iTamC])
+{
+    int iPivote= iMatAct[0][0], iPivoteAnt=1;
+    int iPivoteReng, iPivoteCol;
+    int iMatAnt[iTamR][iTamC];
+    int iter=0;
+    
+    
+    for (int iReng = 0; iReng < iTamR; iReng++)
+    {
+        for (int iCol = 0; iCol < iTamC; iCol++)
+        {
+>>>>>>> Stashed changes
             // Para tomar la diagonal.
             if (iReng == iCol) {
                 iPivote = iCoeficientes[iReng][iCol];
                 // Primero hacer ceros hasta la columna del pivote.
+                for ( int iC = 0; iC < iPivoteCol ; iC++)
+                {
+                    if(iC==iTamR)
+                    {
+                    }
+                    else{
+                        iMatAct[iReng][iCol] = 0;
+                    }
+                }
                 // Copiar en la diagonal principal el pivote hasta la columna del pivote.
+                for (int iC=0; iC < iPivoteCol; iC++)
+                {
+                        if(iReng==iCol)
+                            iMatAct[iReng][iCol]=iPivote;
+                }
                 // Copiar el renglón del pivote igual, menos los ceros de la izquierda ya obtenidos.
+                for(int iC=0; iC < iPivoteReng; iC++)
+                {
+                    if(iC>=iPivoteReng)
+                    iMatAnt[iReng][iC]=iMatAct[iC][iCol];
+                }
                 // Hacer dos funciones: uno para el cuadrante I, y otro para el cuadrante IV.
+                //Cuadrante I
+                for(int iR= iPivoteReng ; iR<iTamR; iR++)
+                {
+                    for( int iC = iPivoteCol ; iC > iTamC ; iC++)
+                    {
+            
+                        iMatAct[iR][iC] = ( ((iMatAnt[iR][iC]*iPivote)-(iMatAnt[iter][iC]* iMatAnt[iR][iter]) ) / iPivoteAnt );
+                        iMatAct[iR][iC] = -1*( iMatAct[iR][iC]);
+                        
+                    }
+                    
+                }
+                    
+                //Cuadrante IV
+                for(int iR= iPivoteReng ; iR>iTamR; iR++)
+                {
+                    for( int iC = iPivoteCol ; iC > iTamC ; iC++)
+                    {
+                        
+                        iMatAct[iR][iC] = ( ((iMatAnt[iR][iC]*iPivote)-(iMatAnt[iter][iC]* iMatAnt[iR][iter]) ) / iPivoteAnt );
+                        
+                    }
+                    
+                }
             }
             
         }
+
     }
 }
 
+
 // Función que resuelve un SEL dada en una matriz.
+<<<<<<< Updated upstream
 void SolucionSEL (int iTamR, int iTamC) {
     for (int iReng = iTamR - 1; iTamR >= 0; iTamR--) {
         for (int iCol = ) {
             
         }
+=======
+void SolucionSEL (int iTamR, int iTamC)
+{
+    for (int iReng = iTamR - 1; iTamR >= 0; iTamR--)
+    {
+       
+>>>>>>> Stashed changes
     }
 }
+
 
 int main() {
     
@@ -86,8 +155,15 @@ int main() {
     
     // Ingreso de coeficientes.
     cout << "Por favor ingrese" << endl;
+<<<<<<< Updated upstream
     for (int iReng = 0; iReng < iEcuaciones; iReng++) {
         for (int iCol = 0; iCol < iIncognitas; iCol++) {
+=======
+    for (int iReng = 0; iReng < iEcuaciones; iReng++)
+    {
+        for (int iCol = 0; iCol < iIncognitas+1; iCol++)
+        {
+>>>>>>> Stashed changes
             cout << "El coeficiente #"<< iCol + 1 <<" de la ecuación " << iReng + 1 << ": ";
             cin >> iCoeficientes[iReng][iCol];
         }
