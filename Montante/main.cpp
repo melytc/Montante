@@ -3,7 +3,14 @@
 //  Montante
 //
 //  Created by Melissa Trevino on 3/3/16.
-//  Copyright © 2016 Melissa Trevino. All rights reserved.
+//
+//  Collaborators:
+//  Melissa Janet Treviño Caballero     A00816715
+//  María Paula Anastás Benavides       A00817285
+//  Luis Felipe Salazar Valenzuela      A00817158
+//
+//  Copyright © 2016 Melissa Trevino.
+//  All rights reserved.
 //
 
 #include <iostream>
@@ -49,6 +56,7 @@ void mostrarMatriz (int iTamR, int iTamC)
     cout << endl;
 }
 
+// Función que crea una matriz aumentada
 void creaMatrizAumentada(int iTam)
 {
     // Primero llena la matriz de coeficientes la parte izquierda.
@@ -69,6 +77,27 @@ void creaMatrizAumentada(int iTam)
     }
     
     mostrarMatriz(iTam, iTam * 2);
+}
+
+// Función que obtiene la matriz aumentada modificada después del método de Montante.
+void MatrizMontante(int iTamR, int iTamC)
+{
+    int iPivote;
+    for (int iReng = 0; iReng < iTamR; iReng++)
+    {
+        for (int iCol = 0; iCol < iTamC; iCol++)
+        {
+            // Para tomar la diagonal.
+            if (iReng == iCol)
+            {
+                iPivote = iMAumentada[iReng][iCol];
+                // Primero hacer ceros hasta la columna del pivote.
+                // Copiar el renglón del pivote igual, menos los ceros de la izquierda ya obtenidos.
+                // Hacer dos funciones: uno para el cuadrante I, y otro para el cuadrante IV.
+            }
+            
+        }
+    }
 }
 
 int main() {
